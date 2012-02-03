@@ -1,7 +1,7 @@
 language: php
 
 php: 
-  - 5.3
+  #- 5.3
   - 5.4
 
 before_script: 
@@ -39,5 +39,5 @@ before_script:
   - $PHPUNIT --version
   - cd $BUILD_HOME/tests
   
-script: $PHPUNIT --group Zend_Application
+script: $PHPUNIT Zend/DebugTest.php
 
