@@ -33,11 +33,11 @@ before_script:
   - $PYRUS $PHPUNIT_HOME install --optionaldeps pear.phpunit.de/PHPUnit-3.5.15
 
   - awk '{if(NR==1){print $0,"-d include_path='$PHPUNIT_HOME'php"}else{print }}' ${PHPUNIT_HOME}bin/phpunit > ${PHPUNIT_HOME}bin/phpunit35
-  - cat ${PHPUNIT_HOME}bin/phpunit35
+  #- cat ${PHPUNIT_HOME}bin/phpunit35
   - chmod 755 ${PHPUNIT_HOME}bin/phpunit35
-  - PHPUNIT=${PHPUNIT_HOME}bin/phpunit35
-  - export PHPUNIT
+  - export PHPUNIT=${PHPUNIT_HOME}bin/phpunit35
   - $PHPUNIT --version
   - cd $BUILD_HOME/tests
   
-script: ./runtests.sh
+script: $PHPUNIT --group Zend_Application
+
